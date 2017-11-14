@@ -1,4 +1,4 @@
-# IGPrints
+# PosterLuv
 
 Small app to print Instagram photos
 
@@ -7,13 +7,13 @@ Small app to print Instagram photos
 Clone the repo:
 
 ```bash
-$ git clone https://github.com/gxespino/ig-prints.git
+$ git clone https://github.com/gxespino/posterluv.git
 ```
 
 Move into the directory and install the dependencies:
 
 ```bash
-$ cd ig-prints
+$ cd PosterLuv
 $ bundle install
 ```
 
