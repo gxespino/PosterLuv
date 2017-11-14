@@ -1,6 +1,8 @@
 class InstagramPost
-  def initialize(params)
-    @params = params
+  attr_reader :short_code
+
+  def initialize(short_code:)
+    @short_code = short_code
   end
 
   def valid?
@@ -9,7 +11,7 @@ class InstagramPost
 
   def to_json
     {
-      displayUrl: 'picture.com',
+      shortCode: @short_code,
       userPictureUrl: 'userpic.com'
     }.to_json
   end
