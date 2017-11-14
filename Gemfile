@@ -17,9 +17,10 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'minitest-rails'
+  gem 'minitest-spec-rails'
   gem 'selenium-webdriver'
   gem 'sqlite3'
-  gem 'pry', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
 end
 
 group :development do

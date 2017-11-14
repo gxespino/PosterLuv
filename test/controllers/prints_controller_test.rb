@@ -10,5 +10,4 @@ describe PrintsController do
     get prints_create_url
     value(response).must_be :success?
   end
-
 end
