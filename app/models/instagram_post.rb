@@ -48,15 +48,29 @@ class InstagramPost
 
   def assign_values!
     @parsed ||= JSON.parse(@response_body, symbolize_names: true)
+    @shortcode_media = @parsed[:graphql][:shortcode_media]
 
     tap do |post|
-      post.display_url                 = @parsed[:graphql][:shortcode_media][:shortcode]
-      post.username                    = @parsed[:graphql][:shortcode_media][:shortcode]
-      post.profile_pic_url             = @parsed[:graphql][:shortcode_media][:shortcode]
-      post.like_count                  = @parsed[:graphql][:shortcode_media][:shortcode]
-      post.taken_at_timestamp          = @parsed[:graphql][:shortcode_media][:shortcode]
-      post.edge_media_to_caption       = @parsed[:graphql][:shortcode_media][:shortcode]
-      post.edge_media_to_comment_array = @parsed[:graphql][:shortcode_media][:shortcode]
+      post.display_url                 = @shortcode_media[:display_url]
+      post.username                    = @shortcode_media[:owner][:username]
+      post.profile_pic_url             = @shortcode_media[:owner][:profile_pic_url]
+      post.like_count                  = @shortcode_media[:edge_media_preview_like][:count]
+      post.taken_at_timestamp          = @shortcode_media[:taken_at_timestamp]
+      post.edge_media_to_caption       = media_caption
+      post.edge_media_to_comment_array = media_comment_array
+    end
+  end
+
+  def media_caption
+    return nil if @shortcode_media[:edge_media_to_caption][:edges].empty?
+    @shortcode_media[:edge_media_to_caption][:edges][0][:node][:text]
+  end
+
+  def media_comment_array
+    return [] if @shortcode_media[:edge_media_to_comment][:edges].empty?
+
+    @shortcode_media[:edge_media_to_comment][:edges].map do |edge|
+      { text: edge[:node][:text], username: edge[:node][:owner][:username] }
     end
   end
 end
