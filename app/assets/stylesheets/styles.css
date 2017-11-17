@@ -128,6 +128,7 @@
   font-family: 'Libre Franklin', sans-serif;
   font-weight: 400;
   text-transform: none;
+  max-width: 70px;
 }
 
 .submit-button:hover {
