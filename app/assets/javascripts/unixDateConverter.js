@@ -1,14 +1,16 @@
 function UnixDateConverter(unixTimeStamp) {
   this.getTimeAgo = function() {
-    var postDate       = new Date(unixTimeStamp);
-    var daysAgoString  = moment.unix(unixTimeStamp).fromNow();
-    var daysAgoNumber  = parseInt(daysAgoString);
-    var weeksAgoNumber = Math.round((daysAgoNumber / 7))
+    var nowDate     = moment(Date.now())
+    var postDate    = moment(new Date(unixTimeStamp * 1000));
+    var diffInDays  = nowDate.diff(postDate, 'days')
+    var diffInWeeks = Math.round((diffInDays / 7))
 
-    if (daysAgoNumber <= 6) {
-      return `${daysAgoNumber}d`
+    if (diffInDays === 0) {
+      return `1d`
+    } else if (diffInDays <= 6) {
+      return `${diffInDays}d`
     } else {
-      return `${weeksAgoNumber}w`
+      return `${diffInWeeks}w`
     }
   }
 }
