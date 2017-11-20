@@ -1,6 +1,6 @@
 function PreviewChanger(data) {
   // Options
-  this.commentsToPreview = 3
+  this.commentsToPreview = 2
 
   // Data
   this.username               = data['username'];
