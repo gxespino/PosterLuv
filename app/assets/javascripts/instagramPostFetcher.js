@@ -2,6 +2,10 @@ function InstagramPostFetcher() {
   this.instagramPostUrl = document.getElementById('Instagram-URL').value
 
   this.fetch = function() {
+    var spinnerContainer = document.getElementById('spinner-container');
+    var spinner = new Spinner().spin(spinnerContainer);
+
+
     $.ajax({
       url: '/instagram_posts',
       type: 'POST',
@@ -9,7 +13,10 @@ function InstagramPostFetcher() {
         instagramPostUrl: this.instagramPostUrl
       },
       success: function(data) {
-        console.log(data); 
+        console.log(data);
+
+        new PreviewChanger(data).change();
+        spinner.stop();
       }
     })
   }
