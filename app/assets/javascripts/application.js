@@ -14,6 +14,7 @@
 //= require turbolinks
 //= require "moment"
 //= require "unixDateConverter"
+//= require "posterTextHtmlBuilder"
 //= require "previewChanger"
 //= require "spinner"
 //= require "instagramPostFetcher"
