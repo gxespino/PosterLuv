@@ -12,9 +12,11 @@
                  autofocus="true"
                  placeholder="https://www.instagram.com/p/BaUq7nIlRf7"
                  id="Instagram-URL">
-          <input value="Got It"
-                 class="submit-button w-button"
-                 onClick="new InstagramPostFetcher().fetch();">
+          <a href="javascript:void(0)"
+             class="submit-button"
+             onClick="new InstagramPostFetcher().fetch();">
+            Got It
+          </a>
         </div>
       </form>
     </div>
@@ -51,7 +53,11 @@
             <p class="paragraph small">Start typing your address and then choose from the dropdown.</p>
           </div>
         </div>
-        <input type="submit" value="Buy Now" data-wait="Please wait..." class="submit-button w-button">
+        <a href="javascript:void(0)"
+           class="submit-button"
+           onClick="console.log('Buy now');">
+          Buy Now
+        </a>
       </form>
     </div>
   </div>

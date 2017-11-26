@@ -124,11 +124,16 @@
 }
 
 .submit-button {
+  padding: 9px 15px;
+  background-color: #3898EC;
+  color: white;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
   border-radius: 4px;
-  font-family: 'Libre Franklin', sans-serif;
-  font-weight: 400;
-  text-transform: none;
-  max-width: 70px;
+  text-align: center;
+  width: 20%;
 }
 
 .submit-button:hover {
