@@ -2,6 +2,6 @@ class PrintsController < ApplicationController
   def new
   end
 
-  def create
+  def success
   end
 end
