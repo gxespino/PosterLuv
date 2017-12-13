@@ -1,14 +1,11 @@
 function PurchaseProcessor() {
+  this.selectedOption = document.getElementById('print-size').selectedOptions[0]
   this.params = {
     instagramPostUrl:  document.getElementById('Instagram-URL').value,
-    printSize:         document.getElementById('print-size').value,
     customerName:      document.getElementById('customer-name').value,
     shippingAddress:   document.getElementById('shipping-address').value,
-    amount:            10000
-  }
-
-  this.amount = function() {
-    return 10000
+    printSize:         this.selectedOption.dataset.size,
+    amount:            this.selectedOption.dataset.amount
   }
 
   this.postToPurchases = function(token, params) {
@@ -51,8 +48,8 @@ function PurchaseProcessor() {
     // Open Checkout with further options:
     handler.open({
       name:        'Posterluv',
-      description: this.params.printSize,
-      amount:      this.amount()
+      description: this.params.printSize + " Poster",
+      amount:      parseInt(this.params.amount)
     });
 
     // Close Checkout on page navigation:
