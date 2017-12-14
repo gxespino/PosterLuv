@@ -12,6 +12,7 @@ function PurchaseProcessor() {
   this.postToPurchases = function(token, params) {
     var successFlash = document.getElementById('success-flash')
     var errorFlash   = document.getElementById('error-flash')
+    var inputs       = document.getElementsByTagName('input');
 
     $.ajax({
       url: '/purchases',
@@ -26,10 +27,18 @@ function PurchaseProcessor() {
         stripeEmail:      token.email
       },
       success: function(data) {
-        successFlash.style.display = "flex"
+        successFlash.style.display = 'flex'
+
+        for (index = 0; index < inputs.length; ++index) {
+          inputs[index].value = ''
+        }
       },
       error: function(data) {
-        errorFlash.style.display = "flex"
+        errorFlash.style.display = 'flex'
+
+        for (index = 0; index < inputs.length; ++index) {
+          inputs[index].value = ''
+        }
       }
     })
   }
