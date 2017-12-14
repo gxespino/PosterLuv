@@ -22,9 +22,9 @@ function PreviewChanger(data) {
 
   this.likeCountText = function() {
     if (this.likeCount === 1) {
-      return `${this.likeCount} like`
+      return this.likeCount + " like"
     } else {
-      return `${this.likeCount} likes`
+      return this.likeCount + " likes"
     }
   }
 

@@ -9,18 +9,18 @@ function PosterTextHtmlBuilder(username, text) {
       switch (word.split("")[0]) {
         case '#':
           if (word.length <= 1) {
-            var hashtag = `${word}`;
+            var hashtag = word;
           } else {
-            var hashtag = `<span class="at-username">${word}</span>`;
+            var hashtag = "<span class='at-username'>" + word + " </span>";
           }
 
           styledTextArray.push(hashtag);
           break;
         case '@':
           if (word.length <= 1) {
-            var username = `${word}`;
+            var username = word;
           } else {
-            var username = `<span class="at-username">${word}</span>`;
+            var username = '<span class="at-username">' + word + " </span>";
           }
 
           styledTextArray.push(username);
@@ -49,11 +49,8 @@ function PosterTextHtmlBuilder(username, text) {
   this.build = function() {
     if (text == null) { return ""; }
 
-    return `
-      <p class="instagram-text">
-        <span class="username">${username} </span>
-        ${this.styledText()}
-      </p>
-    `
+    return(
+      '<p class="instagram-text"><span class="username">' + username + ' </span>' + this.styledText() + '</p>'
+    )
   }
 }

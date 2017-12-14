@@ -6,11 +6,11 @@ function UnixDateConverter(unixTimeStamp) {
     var diffInWeeks = Math.round((diffInDays / 7))
 
     if (diffInDays === 0) {
-      return `1d`
+      return '1d'
     } else if (diffInDays <= 6) {
-      return `${diffInDays}d`
+      return diffInDays + 'd'
     } else {
-      return `${diffInWeeks}w`
+      return diffInWeeks +'w'
     }
   }
 }
