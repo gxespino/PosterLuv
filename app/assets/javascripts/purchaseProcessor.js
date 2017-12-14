@@ -45,9 +45,25 @@ function PurchaseProcessor() {
 
   this.process = function() {
     var spinnerContainer = document.getElementById('spinner-container');
-    var spinner = new Spinner().spin(spinnerContainer);
-    var params = this.params;
-    var postFunction = this.postToPurchases
+    var spinner          = new Spinner().spin(spinnerContainer);
+    var params           = this.params;
+    var postFunction     = this.postToPurchases
+    var inputs           = document.getElementsByTagName('input');
+    var emptyInputs      = false;
+
+    for (index = 0; index < inputs.length; ++index) {
+      if (inputs[index].value == '') {
+        emptyInputs = true
+      }
+    }
+
+    if (emptyInputs) {
+      var emptyInputsFlash = document.getElementById('empty-inputs-flash')
+
+      emptyInputsFlash.style.display = 'flex'
+      spinner.stop();
+      return;
+    }
 
     var handler = StripeCheckout.configure({
       key: this.publishableKey,
@@ -71,5 +87,7 @@ function PurchaseProcessor() {
       handler.close();
       spinner.stop();
     });
+
+    spinner.stop();
   }
 }
