@@ -18,3 +18,4 @@
 //= require "previewChanger"
 //= require "spinner"
 //= require "instagramPostFetcher"
+//= require "purchaseProcessor"
