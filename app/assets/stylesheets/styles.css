@@ -110,6 +110,11 @@
   font-weight: 400;
 }
 
+.paragraph.flash {
+  margin-bottom: 0px;
+  color: #181818;
+}
+
 .form-block {
   margin-bottom: 0px;
 }
@@ -161,6 +166,7 @@
   margin-left: auto;
   padding-top: 40px;
   padding-bottom: 100px;
+  float: right;
   border: 3px solid #8a8a8a;
   background-image: url('../images/KATEMAXSTOCK-1124.jpg');
   background-position: 0px 0px;
@@ -179,11 +185,12 @@
 }
 
 .column {
+  padding-right: 0px;
   padding-left: 20px;
 }
 
 .column-2 {
-  padding-right: 20px;
+  padding-right: 0px;
 }
 
 .poster-top {
@@ -316,6 +323,31 @@
 
 .at-username {
   color: #36c;
+}
+
+.flash-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  margin-bottom: 50px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 2px solid #7fd686;
+  background-color: #9eeeb1;
+  display: none;
+}
+
+.flash-container.error {
+  border-color: #d67fb3;
+  background-color: #ee9eb8;
 }
 
 @media (max-width: 767px) {

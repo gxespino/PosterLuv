@@ -8,11 +8,9 @@ class PurchasesController < ApplicationController
 
     if purchase.paid?
       render json: { status: :ok }
+    else
+      render json: { status: :bad_request }
     end
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to root_path
   end
 
   private

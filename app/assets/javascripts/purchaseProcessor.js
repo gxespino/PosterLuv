@@ -10,6 +10,9 @@ function PurchaseProcessor() {
   }
 
   this.postToPurchases = function(token, params) {
+    var successFlash = document.getElementById('success-flash')
+    var errorFlash   = document.getElementById('error-flash')
+
     $.ajax({
       url: '/purchases',
       type: 'POST',
@@ -23,7 +26,10 @@ function PurchaseProcessor() {
         stripeEmail:      token.email
       },
       success: function(data) {
-        // flash message
+        successFlash.style.display = "flex"
+      },
+      error: function(data) {
+        errorFlash.style.display = "flex"
       }
     })
   }
