@@ -67,7 +67,6 @@ function PurchaseProcessor() {
 
     var handler = StripeCheckout.configure({
       key: this.publishableKey,
-      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       token: function(token) {
         postFunction(token, params)
@@ -78,7 +77,7 @@ function PurchaseProcessor() {
     // Open Checkout with further options:
     handler.open({
       name:        'Posterluv',
-      description: this.params.printSize + " Poster",
+      description: this.params.printSize + " inches - " + "$"+(this.params.amount / 100)+".00",
       amount:      parseInt(this.params.amount)
     });
 
