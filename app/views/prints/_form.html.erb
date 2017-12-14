@@ -69,9 +69,10 @@
         </form>
 
         <script src="https://checkout.stripe.com/checkout.js"></script>
-
         <button class="submit-button"
                 type="button"
+                id="key-button"
+                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                 onclick="new PurchaseProcessor().process()">
           Buy Now
         </button>

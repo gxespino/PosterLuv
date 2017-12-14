@@ -5,7 +5,6 @@ function InstagramPostFetcher() {
     var spinnerContainer = document.getElementById('spinner-container');
     var spinner = new Spinner().spin(spinnerContainer);
 
-
     $.ajax({
       url: '/instagram_posts',
       type: 'POST',

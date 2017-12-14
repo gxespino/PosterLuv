@@ -1,5 +1,6 @@
 function PurchaseProcessor() {
   this.selectedOption = document.getElementById('print-size').selectedOptions[0]
+  this.publishableKey = document.getElementById('key-button').dataset.key
   this.params = {
     instagramPostUrl:  document.getElementById('Instagram-URL').value,
     customerName:      document.getElementById('customer-name').value,
@@ -22,10 +23,7 @@ function PurchaseProcessor() {
         stripeEmail:      token.email
       },
       success: function(data) {
-        console.log(data);
-
-        new PreviewChanger(data).change();
-        spinner.stop();
+        // flash message
       }
     })
   }
@@ -37,11 +35,12 @@ function PurchaseProcessor() {
     var postFunction = this.postToPurchases
 
     var handler = StripeCheckout.configure({
-      key: 'pk_test_U55DMkw44K26t5XA6k4aPzjS',
+      key: this.publishableKey,
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       token: function(token) {
         postFunction(token, params)
+        spinner.stop();
       }
     });
 

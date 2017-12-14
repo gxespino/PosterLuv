@@ -1,24 +1,18 @@
 class PurchasesController < ApplicationController
   def create
-    purchases_params
-    binding.pry
-    @amount = 500
+    purchase = Purchase.new(
+      email:  purchases_params[:stripeEmail],
+      token:  purchases_params[:stripeToken],
+      amount: purchases_params[:amount]
+    ).charge!
 
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
-
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
+    if purchase.paid?
+      render json: { status: :ok }
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to success_path
+    redirect_to root_path
   end
 
   private
